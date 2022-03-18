@@ -20,7 +20,7 @@
   width: 90%;
   margin: 3px;
 
-  padding: 3px;
+  padding: 1px 15px;
   border: 1px solid black;
   background-color: peachpuff;
   display: flex;
@@ -37,4 +37,10 @@
   padding: 3px;
   margin-left: auto;
   margin-right: 0;
+}
+
+#repeated{
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
 }
