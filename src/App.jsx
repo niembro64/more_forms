@@ -50,13 +50,17 @@ function App() {
       newErrorValue = "";
     }
     if (event.target.name === "password") {
-      console.log("in password checker");
-      (event.target.value == form.confirm_password ? newPassMatch = true : newPassMatch = false);
+      event.target.value === form.confirm_password
+        ? (newPassMatch = true)
+        : (newPassMatch = false);
+      console.log(`password checker : ${newPassMatch}`);
     } else if (event.target.name === "confirm_password") {
-      console.log("in confirm_password checker");
-      (event.target.value == form.password ? newPassMatch = true : newPassMatch = false);
+      event.target.value === form.password
+        ? (newPassMatch = true)
+        : (newPassMatch = false);
+      console.log(`confirm_password checker : ${newPassMatch}`);
     } else {
-      console.log("in somewher else");
+      console.log(`other checker : ${newPassMatch}`);
     }
     const newStateErr = {
       ...errors,
@@ -79,7 +83,9 @@ function App() {
             className="input"
             type="text"
             name="first_name"
-            onChange={onChangeHandler}
+            onChange={(event) => {
+              onChangeHandler(event);
+            }}
             placeholder="First Name"
           />
         </div>
@@ -96,7 +102,9 @@ function App() {
             className="input"
             type="text"
             name="last_name"
-            onChange={onChangeHandler}
+            onChange={(event) => {
+              onChangeHandler(event);
+            }}
             placeholder="Last Name"
           />
         </div>
@@ -113,7 +121,9 @@ function App() {
             className="input"
             type="text"
             name="email"
-            onChange={onChangeHandler}
+            onChange={(event) => {
+              onChangeHandler(event);
+            }}
             placeholder="Email"
           />
         </div>
@@ -130,7 +140,9 @@ function App() {
             className="input"
             type="text"
             name="password"
-            onChange={onChangeHandler}
+            onChange={(event) => {
+              onChangeHandler(event);
+            }}
             placeholder="Password"
           />
         </div>
@@ -147,7 +159,9 @@ function App() {
             className="input"
             type="text"
             name="confirm_password"
-            onChange={onChangeHandler}
+            onChange={(event) => {
+              onChangeHandler(event);
+            }}
             placeholder="Confirm Password"
           />
         </div>
@@ -157,9 +171,9 @@ function App() {
         ) : (
           <p className="alert-danger">{errors.confirm_password}</p>
         )}
-        {errors.first_name == "" &&
-        errors.last_name == "" &&
-        errors.email == "" ? (
+        {errors.first_name === "" &&
+        errors.last_name === "" &&
+        errors.email === "" ? (
           <input
             type="submit"
             className="btn btn-primary btn-lg d-block mx-auto my-2"
@@ -187,10 +201,14 @@ function App() {
           <p name="test">error_email: {errors.email}</p>
           <p name="test">error_password: {errors.password}</p>
           <p name="test">error_confirm_password: {errors.confirm_password}</p>
-          {errors.pass_match ? (
-            <p name="test">MATCH</p>
+          {form.first_name ? (
+            errors.pass_match ? (
+              <p name="test">MATCH</p>
+            ) : (
+              <p name="test">XXX NO MATCH XXX</p>
+            )
           ) : (
-            <p name="test">XXX NO MATCH XXX</p>
+            ""
           )}
         </div>
       </div>
