@@ -65,7 +65,7 @@ function App() {
     const newStateErr = {
       ...errors,
       [event.target.name]: newErrorValue,
-      passMatch: newPassMatch,
+      pass_match: newPassMatch,
     };
     setErrors(newStateErr);
   };
